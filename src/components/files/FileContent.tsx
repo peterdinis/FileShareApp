@@ -1,9 +1,7 @@
 "use client"
 
-import type React from "react"
-
 import { useQuery, useMutation, Authenticated, Unauthenticated } from "convex/react"
-import { type FC, useRef, useState } from "react"
+import { ChangeEvent, type FC, useRef, useState } from "react"
 import { toast } from "sonner"
 import { api } from "../../../convex/_generated/api"
 import type { Id } from "../../../convex/_generated/dataModel"
@@ -18,7 +16,7 @@ const FileContent: FC = () => {
   const fileInput = useRef<HTMLInputElement>(null)
   const [uploading, setUploading] = useState(false)
 
-  async function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
+  async function handleFileUpload(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0]
     if (!file) return
 
