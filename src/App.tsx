@@ -1,21 +1,18 @@
 import { Authenticated, Unauthenticated, useQuery, useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
-import { SignInForm } from "./SignInForm";
-import { SignOutButton } from "./SignOutButton";
+import { SignInForm } from "./components/auth/SignInForm";
 import { Toaster } from "sonner";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 import { Id } from "../convex/_generated/dataModel";
+import Header from "./components/home/Header";
 
 export default function App() {
   const shareCode = new URLSearchParams(window.location.search).get("share");
   
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm p-4 flex justify-between items-center border-b">
-        <h2 className="text-xl font-semibold accent-text">File Share</h2>
-        <SignOutButton />
-      </header>
+      <Header />
       <main className="flex-1 p-8">
         <div className="max-w-4xl mx-auto">
           {shareCode ? <SharedFile shareCode={shareCode} /> : <Content />}
