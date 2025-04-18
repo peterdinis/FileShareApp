@@ -1,9 +1,9 @@
-const { } = require('tailwindcss/defaultTheme');
+const {} = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  variants: {
-    extend: {},
-  },
+    mode: 'jit',
+    purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+    variants: {
+        extend: {},
+    },
 };
