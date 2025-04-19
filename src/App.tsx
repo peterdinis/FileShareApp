@@ -1,21 +1,9 @@
-import { Outlet, RootRoute, Route, Router, RouterProvider } from "@tanstack/react-router";
-import Header from "./components/home/Header";
+import { RootRoute, Route, Router, RouterProvider } from "@tanstack/react-router";
 import Hero from "./components/home/Hero";
 import { SignInForm } from "./components/auth/SignInForm";
 import ShareFile from "./components/files/SharedFile";
 
-const rootRoute = new RootRoute({
-    component: () => (
-        <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1 p-8">
-                <div className="mx-auto max-w-4xl">
-                    <Outlet />
-                </div>
-            </main>
-        </div>
-    ),
-});
+const rootRoute = new RootRoute({});
 
 const indexRoute = new Route({
     getParentRoute: () => rootRoute,
