@@ -1,5 +1,3 @@
-'use client';
-
 import {
     useQuery,
     useMutation,
@@ -10,8 +8,8 @@ import { ChangeEvent, type FC, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { api } from '../../../convex/_generated/api';
 import type { Id } from '../../../convex/_generated/dataModel';
-import { SignInForm } from '../auth/SignInForm';
 import { FileText, Upload, Download, Share2 } from 'lucide-react';
+import { Link } from '@tanstack/react-router';
 
 const FileContent: FC = () => {
     const files = useQuery(api.files.listFiles);
@@ -119,11 +117,12 @@ const FileContent: FC = () => {
                         <p className='mx-auto mb-8 max-w-2xl text-xl text-slate-600'>
                             Secure, fast, and easy file sharing for everyone.
                         </p>
+
+                        <Link href="/login" className="mt-3  font-bold text-center">Try now</Link>
                     </Unauthenticated>
                 </div>
             </div>
-
-            {/* Features Section - Only show when unauthenticated */}
+            
             <Unauthenticated>
                 <div className='mx-auto max-w-5xl px-4 pb-16'>
                     <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
@@ -166,17 +165,7 @@ const FileContent: FC = () => {
                     </div>
                 </div>
             </Unauthenticated>
-
-            {/* Authentication Section */}
-            <Unauthenticated>
-                <div className='mx-auto max-w-md px-4 pb-20'>
-                    <div className='rounded-2xl border border-slate-100 bg-white/80 p-8 shadow-lg backdrop-blur-sm'>
-                        <SignInForm />
-                    </div>
-                </div>
-            </Unauthenticated>
-
-            {/* Files Section */}
+            
             <Authenticated>
                 <div className='mx-auto w-full max-w-5xl px-4 py-12'>
                     <div className='rounded-2xl border border-slate-100 bg-white/80 p-8 shadow-md backdrop-blur-sm'>

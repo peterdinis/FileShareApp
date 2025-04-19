@@ -1,24 +1,42 @@
-import { Toaster } from 'sonner';
-import Header from './components/home/Header';
-import FileContent from './components/files/FileContent';
-import SharedFile from './components/files/SharedFile';
+import { RootRoute, Route, Router, RouterProvider } from "@tanstack/react-router";
+import Hero from "./components/home/Hero";
+import { SignInForm } from "./components/auth/SignInForm";
+import ShareFile from "./components/files/SharedFile";
+
+const rootRoute = new RootRoute({});
+
+const indexRoute = new Route({
+    getParentRoute: () => rootRoute,
+    path: '/',
+    component: Hero
+});
+
+const loginRoute = new Route({
+    getParentRoute: () => rootRoute,
+    path: '/login',
+    component: SignInForm
+})
+
+const shareRoute = new Route({
+    getParentRoute: () => rootRoute,
+    path: '/share',
+    component: ShareFile
+})
+
+declare module '@tanstack/react-router' {
+    interface Register {
+        router: typeof router
+    }
+}
+
+const routeTree = rootRoute.addChildren([indexRoute, loginRoute, shareRoute]);
+
+const router = new Router({ routeTree });
 
 export default function App() {
-    const shareCode = new URLSearchParams(window.location.search).get('share');
-
     return (
-        <div className='flex min-h-screen flex-col'>
-            <Header />
-            <main className='flex-1 p-8'>
-                <div className='mx-auto max-w-4xl'>
-                    {shareCode ? (
-                        <SharedFile shareCode={shareCode} />
-                    ) : (
-                        <FileContent />
-                    )}
-                </div>
-            </main>
-            <Toaster />
-        </div>
+        <>
+            <RouterProvider router={router} />
+        </>
     );
 }

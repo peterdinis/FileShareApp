@@ -1,13 +1,14 @@
-
 import { useAuthActions } from "@convex-dev/auth/react"
 import { useState } from "react"
 import { toast } from "sonner"
 import { Mail, Lock, UserPlus, LogIn, User } from "lucide-react"
+import { useRouter } from "@tanstack/react-router"
 
 export function SignInForm() {
   const { signIn } = useAuthActions()
   const [flow, setFlow] = useState<"signIn" | "signUp">("signIn")
   const [submitting, setSubmitting] = useState(false)
+  const router = useRouter()
 
   return (
     <div className="w-full">
@@ -36,14 +37,18 @@ export function SignInForm() {
           setSubmitting(true)
           const formData = new FormData(e.target as HTMLFormElement)
           formData.set("flow", flow)
-          void signIn("password", formData).catch((_error) => {
-            const toastTitle =
-              flow === "signIn"
-                ? "Could not sign in, did you mean to sign up?"
-                : "Could not sign up, did you mean to sign in?"
-            toast.error(toastTitle)
-            setSubmitting(false)
-          })
+          void signIn("password", formData)
+            .then(() => {
+              router.navigate("/")
+            })
+            .catch((_error) => {
+              const toastTitle =
+                flow === "signIn"
+                  ? "Could not sign in, did you mean to sign up?"
+                  : "Could not sign up, did you mean to sign in?"
+              toast.error(toastTitle)
+              setSubmitting(false)
+            })
         }}
       >
         <div className="relative group">
@@ -110,7 +115,11 @@ export function SignInForm() {
 
       <button
         className="w-full flex items-center justify-center gap-2 bg-white border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 py-3.5 px-4 rounded-xl font-medium shadow-sm hover:shadow transition-all duration-200"
-        onClick={() => void signIn("anonymous")}
+        onClick={() =>
+          void signIn("anonymous").then(() => {
+            router.navigate("/") 
+          })
+        }
       >
         <User size={18} className="text-slate-500" />
         <span>Sign in anonymously</span>

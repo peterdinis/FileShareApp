@@ -52,7 +52,7 @@ const ShareFile: FC<ShareFileProps> = ({ shareCode }: ShareFileProps) => {
                     Shared File
                 </h2>
                 <div className='mb-6 rounded-lg border border-slate-200 bg-slate-50 p-6'>
-                    <h3 className='mb-2 font-medium text-slate-800'>
+                    <h3 className='mb-2 font-medium text-slate-800 break-all'>
                         {sharedFile.name}
                     </h3>
                     <p className='mb-4 text-sm text-slate-500'>
