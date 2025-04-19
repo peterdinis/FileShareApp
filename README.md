@@ -12,7 +12,7 @@ A modern file sharing application built with **Convex**. Users can log in, uploa
 
 ## ⚙️ Tech Stack
 
-- **Frontend**: React / Next.js
+- **Frontend**: React
 - **Backend / Database**: [Convex](https://convex.dev)
 - **File Storage**: Convex File Storage or external (e.g. S3, Cloudinary)
 - **Styling**: TailwindCSS
