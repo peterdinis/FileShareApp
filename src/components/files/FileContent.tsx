@@ -122,8 +122,7 @@ const FileContent: FC = () => {
                     </Unauthenticated>
                 </div>
             </div>
-
-            {/* Features Section - Only show when unauthenticated */}
+            
             <Unauthenticated>
                 <div className='mx-auto max-w-5xl px-4 pb-16'>
                     <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
@@ -166,8 +165,7 @@ const FileContent: FC = () => {
                     </div>
                 </div>
             </Unauthenticated>
-
-            {/* Files Section */}
+            
             <Authenticated>
                 <div className='mx-auto w-full max-w-5xl px-4 py-12'>
                     <div className='rounded-2xl border border-slate-100 bg-white/80 p-8 shadow-md backdrop-blur-sm'>

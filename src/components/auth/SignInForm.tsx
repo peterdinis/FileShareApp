@@ -39,7 +39,7 @@ export function SignInForm() {
           formData.set("flow", flow)
           void signIn("password", formData)
             .then(() => {
-              router.navigate("/") // presmeruj po úspechu
+              router.navigate("/")
             })
             .catch((_error) => {
               const toastTitle =
@@ -117,7 +117,7 @@ export function SignInForm() {
         className="w-full flex items-center justify-center gap-2 bg-white border-2 border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 py-3.5 px-4 rounded-xl font-medium shadow-sm hover:shadow transition-all duration-200"
         onClick={() =>
           void signIn("anonymous").then(() => {
-            router.navigate("/") // presmeruj aj po anonymnom prihlásení
+            router.navigate("/") 
           })
         }
       >
