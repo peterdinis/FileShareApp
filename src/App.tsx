@@ -34,9 +34,5 @@ const routeTree = rootRoute.addChildren([indexRoute, loginRoute, shareRoute]);
 const router = new Router({ routeTree });
 
 export default function App() {
-    return (
-        <>
-            <RouterProvider router={router} />
-        </>
-    );
+    return <RouterProvider router={router} />
 }
