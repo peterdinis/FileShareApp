@@ -1,5 +1,5 @@
 import { v } from 'convex/values';
-import { mutation, query} from './_generated/server';
+import { mutation, query } from './_generated/server';
 import { getAuthUserId } from '@convex-dev/auth/server';
 
 export const generateUploadUrl = mutation({
@@ -47,7 +47,7 @@ export const listFiles = query({
             files.map(async (file) => ({
                 ...file,
                 url: await ctx.storage.getUrl(file.storageId),
-            }))
+            })),
         );
     },
 });
@@ -85,7 +85,7 @@ export const getSharedFile = query({
         const share = await ctx.db
             .query('shares')
             .withIndex('by_access_code', (q) =>
-                q.eq('accessCode', args.accessCode)
+                q.eq('accessCode', args.accessCode),
             )
             .first();
 

@@ -32,3 +32,4 @@ A modern file sharing application built with **Convex**. Users can log in, uploa
 ```bash
 git clone https://github.com/your-username/file-sharing-app.git
 cd file-sharing-app
+```
