@@ -34,7 +34,7 @@ if (runOnceWorkflow) {
         `
 SETUP_SCRIPT_RAN=1
 `,
-        { flag: 'a' }
+        { flag: 'a' },
     );
 }
 

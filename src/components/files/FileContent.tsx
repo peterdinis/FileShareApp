@@ -118,11 +118,16 @@ const FileContent: FC = () => {
                             Secure, fast, and easy file sharing for everyone.
                         </p>
 
-                        <Link href="/login" className="mt-3  font-bold text-center">Try now</Link>
+                        <Link
+                            href='/login'
+                            className='mt-3 text-center font-bold'
+                        >
+                            Try now
+                        </Link>
                     </Unauthenticated>
                 </div>
             </div>
-            
+
             <Unauthenticated>
                 <div className='mx-auto max-w-5xl px-4 pb-16'>
                     <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
@@ -165,7 +170,7 @@ const FileContent: FC = () => {
                     </div>
                 </div>
             </Unauthenticated>
-            
+
             <Authenticated>
                 <div className='mx-auto w-full max-w-5xl px-4 py-12'>
                     <div className='rounded-2xl border border-slate-100 bg-white/80 p-8 shadow-md backdrop-blur-sm'>
