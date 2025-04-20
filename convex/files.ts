@@ -1,4 +1,4 @@
-import { v } from 'convex/values';
+import { ConvexError, v } from 'convex/values';
 import { mutation, query } from './_generated/server';
 import { getAuthUserId } from '@convex-dev/auth/server';
 
@@ -6,7 +6,7 @@ export const generateUploadUrl = mutation({
     args: {},
     handler: async (ctx) => {
         const userId = await getAuthUserId(ctx);
-        if (!userId) throw new Error('Not authenticated');
+        if (!userId) throw new ConvexError('Not authenticated');
         return await ctx.storage.generateUploadUrl();
     },
 });
@@ -20,7 +20,7 @@ export const saveFile = mutation({
     },
     handler: async (ctx, args) => {
         const userId = await getAuthUserId(ctx);
-        if (!userId) throw new Error('Not authenticated');
+        if (!userId) throw new ConvexError('Not authenticated');
 
         return await ctx.db.insert('files', {
             storageId: args.storageId,
@@ -58,11 +58,11 @@ export const createShare = mutation({
     },
     handler: async (ctx, args) => {
         const userId = await getAuthUserId(ctx);
-        if (!userId) throw new Error('Not authenticated');
+        if (!userId) throw new ConvexError('Not authenticated');
 
         const file = await ctx.db.get(args.fileId);
         if (!file || file.ownerId !== userId) {
-            throw new Error('File not found or access denied');
+            throw new ConvexError('File not found or access denied');
         }
 
         const accessCode = Math.random().toString(36).substring(2, 15);
