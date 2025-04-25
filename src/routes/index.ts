@@ -1,12 +1,7 @@
-import {
-    RootRoute,
-    Route,
-    Router,
-} from '@tanstack/react-router';
+import { RootRoute, Route, Router } from '@tanstack/react-router';
 import Hero from '@/components/home/Hero';
 import ShareFile from '@/components/files/SharedFile';
 import { SignInForm } from '@/components/auth/SignInForm';
-
 
 const rootRoute = new RootRoute({});
 
